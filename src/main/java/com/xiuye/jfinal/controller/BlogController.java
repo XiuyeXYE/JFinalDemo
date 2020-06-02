@@ -10,6 +10,8 @@ public class BlogController extends Controller {
 
 	@Before(Tx.class)
 	public void save() {
+		setAttr("AKey", "AValue");
+		set("BKey", "BValue");
 		Blog blog = getModel(Blog.class);
 		XLog.ln(blog);
 		XLog.ln(blog.save());
