@@ -1,13 +1,13 @@
 # true 值支持热加载
 undertow.devMode=true
-undertow.port=8080
+undertow.port=8083
 #undertow.host=0.0.0.0
 #undertow.resourcePath = src/main/webapp, classpath:static
 
 #undertow.hotSwapClassPrefix=com.abc.
 
 #绝大部分情况不建议配置 context path
-// undertow.contextPath=/jfinal
+#undertow.contextPath=/jfinal
 
 
 # io 线程数与 worker 线程数

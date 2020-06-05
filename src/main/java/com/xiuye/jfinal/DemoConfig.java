@@ -6,6 +6,8 @@ import com.jfinal.config.Interceptors;
 import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
+import com.jfinal.kit.Prop;
+import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.server.undertow.UndertowServer;
@@ -53,7 +55,10 @@ public class DemoConfig extends JFinalConfig {
 //        .start();
 	}
 
+	Prop p;
+
 	public void configConstant(Constants me) {
+		p = PropKit.useFirstFound("mysql-pro", "mysql-dev.txt");
 		me.setDevMode(true);
 	}
 
@@ -71,17 +76,17 @@ public class DemoConfig extends JFinalConfig {
 
 	public void configPlugin(Plugins me) {
 		// 配置 druid 数据库连接池插件
-		DruidPlugin druidPlugin = new DruidPlugin("jdbc:mysql://localhost/jfinal_demo?characterEncoding=utf8&useSSL=false&zeroDateTimeBehavior=convertToNull",
-				"root", "root");
-		me.add(druidPlugin);
+//		DruidPlugin druidPlugin = new DruidPlugin(p.get("jdbcUrl").trim(), p.get("user").trim(),
+//				p.get("password").trim());
+//		me.add(druidPlugin);
 
 		// 配置ActiveRecord插件
-		ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
+//		ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
 		// 所有映射在 MappingKit 中自动化搞定
 //		_MappingKit.mapping(arp);
-		arp.addMapping("blog","id", Blog.class);
-		
-		me.add(arp);
+//		arp.addMapping("blog", "id", Blog.class);
+
+//		me.add(arp);
 
 		XLog.lg(me.getPluginList());
 

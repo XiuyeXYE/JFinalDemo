@@ -1,0 +1,5 @@
+# config
+jdbcUrl = jdbc:mysql://localhost/jfinal_demo
+user = jfinal
+password = jfinal
+#devMode = false
